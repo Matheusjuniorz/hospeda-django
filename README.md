@@ -2,7 +2,7 @@
 
 O **Hospeda** é uma aplicação web em Python com Django desenvolvida por Matheus Junior Z. para centralizar a gestão de hotéis, acomodações e reservas. Atualmente em fase de MVP, o projeto separa o sistema em dois perfis principais: proprietários (que gerenciam hotéis e quartos) e hóspedes (que consultam e solicitam reservas).
 
-## 🛠️ Instalação Local
+## Instalação Local
 
 1. **Clone o repositório:**
    ```bash
