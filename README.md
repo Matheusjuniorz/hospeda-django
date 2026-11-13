@@ -22,7 +22,7 @@ O **Hospeda** é uma aplicação web em Python com Django desenvolvida por Mathe
    ```
    Acesse em `http://127.0.0`.
 
-## 🔮 Roadmap
+##  Roadmap
 * Validação de disponibilidade e prevenção de conflitos de datas.
 * Filtros e busca dinâmica de hotéis e quartos.
 * Melhorias na interface frontend e testes automatizados.
