@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>HOSPEDA</h1>
+<h2>Portal de Hospedagem</h2>
+<p>"Conforto que acolhe, momentos que marcam."</p>
+<div>
+    <h2>Vou me Hospedar</h2>
+    <a href="{% url 'login' %}">Entrar e reservar</a> · <a href="{% url 'cadastrar_hospede' %}">Criar conta de hóspede</a>
+</div>
+<div>
+    <h2>Vou Anunciar Minha Propriedade</h2>
+    <a href="{% url 'login_admin' %}">Acesso do hotel</a> · <a href="{% url 'cadastrar_admin' %}">Cadastrar meu hotel</a>
+</div>
+{% endblock %}

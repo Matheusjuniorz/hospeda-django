@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<header>
+    <h1>Olá, {{ hospede.nome_usuario }}!</h1>
+    <p>{{ hospede.email_usuario }} · {{ hospede.telefone_usuario }}</p>
+</header>
+
+<h2>Minhas reservas</h2>
+{% if reservas %}
+<table>
+    <tr><th>Hotel</th><th>Quarto</th><th>Entrada</th><th>Saída</th><th>Noites</th><th>Total</th><th></th></tr>
+    {% for r in reservas %}
+    <tr>
+        <td>{{ r.quarto.hotel.nome_hotel }}</td>
+        <td>{{ r.quarto.nome_quarto }}</td>
+        <td>{{ r.data_entrada|date:"d/m/Y" }}</td>
+        <td>{{ r.data_saida|date:"d/m/Y" }}</td>
+        <td>{{ r.noites }}</td>
+        <td>R$ {{ r.preco_total }}</td>
+        <td>
+            {% if r.ativa %}
+            <form action="{% url 'cancelar_reserva' r.pk %}" method="post">{% csrf_token %}<button type="submit">Cancelar</button></form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>Você ainda não tem reservas.</p>
+{% endif %}
+<p><a href="{% url 'reserva_quarto_vazia' %}">Fazer uma nova reserva</a></p>
+{% endblock %}

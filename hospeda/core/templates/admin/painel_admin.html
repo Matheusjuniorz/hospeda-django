@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<main>
+    <h1>Bem-vindo, {{ admin.nome_admin }}!</h1>
+    <p>Você está gerenciando o hotel: <strong>{{ hotel.nome_hotel }}</strong> ({{ hotel.endereco }})</p>
+    <p>Telefone de contato: {{ admin.telefone_admin }}</p>
+    <p><a href="{% url 'editar_hotel' %}">Editar hotel</a> · <a href="{% url 'deletar_hotel' %}">Excluir hotel</a></p>
+
+    <h2>Quartos</h2>
+    <p><a href="{% url 'cadastrar_quarto' %}">+ Cadastrar quarto</a></p>
+    {% for q in quartos %}
+        <p>{{ q }} — <a href="{% url 'editar_quarto' q.pk %}">editar</a></p>
+    {% empty %}
+        <p>Nenhum quarto cadastrado.</p>
+    {% endfor %}
+
+    <h2>Reservas recebidas</h2>
+    {% if reservas %}
+    <table>
+        <tr><th>Hóspede</th><th>Contato</th><th>Quarto</th><th>Entrada</th><th>Saída</th><th>Total</th></tr>
+        {% for r in reservas %}
+        <tr>
+            <td>{{ r.usuario_padrao.nome_usuario }}</td>
+            <td>{{ r.usuario_padrao.telefone_usuario }}</td>
+            <td>{{ r.quarto.nome_quarto }}</td>
+            <td>{{ r.data_entrada|date:"d/m/Y" }}</td>
+            <td>{{ r.data_saida|date:"d/m/Y" }}</td>
+            <td>R$ {{ r.preco_total }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>Nenhuma reserva ainda.</p>
+    {% endif %}
+</main>
+{% endblock %}

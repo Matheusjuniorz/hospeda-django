@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Tem certeza que deseja excluir o hotel "{{ objeto.nome_hotel }}"?</h1>
+<p>Todos os quartos, reservas e a sua conta de administrador serão apagados.</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'painel_admin_hotel' %}">Cancelar</a>
+</form>
+{% endblock %}

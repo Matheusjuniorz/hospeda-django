@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<div>
+    <h1>HOSPEDA</h1>
+    <h2>Reservar Quarto</h2>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <div class="Escolha de quarto">
+        <label for="quartos">Escolha um Quarto:</label>
+        <select name="quartos" id="quartos">
+            <option value="">Selecione:</option>
+            {% for q in lista_de_quartos %}
+                <option value="{{ q.id }}" {% if quarto_selecionado and q.id == quarto_selecionado.id %}selected{% endif %}>
+                    {{ q }}
+                </option>
+            {% empty %}
+                <option value="">Nenhum quarto encontrado no banco de dados</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="campo-reserva">
+        <label for="{{ form.data.id_for_label }}">Data da Reserva:</label>
+        {{ form.data }}
+    </div>
+
+    <div class="campo-reserva">
+        <label for="{{ form.horario.id_for_label }}">Horário:</label>
+        {{ form.horario }}
+    </div>
+
+    <div class="campo-reserva">
+        <label for="{{ form.hotel.id_for_label }}">Hotel:</label>
+        {{ form.hotel }}
+    </div>
+
+    <button type="submit" style="margin-top: 15px;">Salvar</button>
+</form>
+{% endblock %}

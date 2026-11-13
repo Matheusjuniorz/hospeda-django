@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Reservar Quarto</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Confirmar reserva</button>
+    <a href="{% url 'lista_quartos' %}">Ver quartos</a>
+</form>
+{% endblock %}

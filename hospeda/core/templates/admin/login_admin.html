@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<main>
+    <h2>Acesso Administrativo — Hotel</h2>
+    {% if form.errors %}<p>Usuário ou senha incorretos.</p>{% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div><label for="id_username">Usuário:</label>{{ form.username }}</div>
+        <div><label for="id_password">Senha:</label>{{ form.password }}</div>
+        <button type="submit">Entrar no Painel</button>
+    </form>
+    <p>Quer anunciar seu hotel? <a href="{% url 'cadastrar_admin' %}">Cadastre-se</a>.</p>
+</main>
+{% endblock %}

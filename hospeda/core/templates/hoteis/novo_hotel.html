@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+
+<head>
+    <h1>HOSPEDA</h1>
+    <h2>Cadastro de Hoteis</h2>
+    <nav>
+        <a href="{% url 'hoteis' %}">Ver Hoteis Cadastrados</a>
+    </nav>
+</head>
+<main>
+    <section>
+        <div class="cadastro de hoteis">
+            <form action="" method="POST">
+                {% csrf_token %} 
+                <div class="nome do hotel">
+                    <label for="nome_hotel">Hotel:</label>
+                    <input type="text" id="nome_hotel" name="nome_hotel" required>
+                </div>
+                <div class="endereço">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                </div>
+                </div>
+                <div class="botão de enviar o as informações">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
+    </section>
+</main>
+
+{% endblock %}

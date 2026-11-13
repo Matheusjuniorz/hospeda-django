@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+{% if eh_admin %}
+<h1>Quartos do meu hotel</h1>
+<p><a href="{% url 'cadastrar_quarto' %}">+ Cadastrar quarto</a></p>
+{% else %}
+<h1>Quartos disponíveis</h1>
+{% endif %}
+<main>
+    <ul>
+        {% for item in quartos %}
+            <li>
+                {% if not eh_admin %}<strong>{{ item.hotel.nome_hotel }}</strong> — {% endif %}{{ item.nome_quarto }} — R$ {{ item.preco }}/diária
+                {% if eh_admin %}
+                    <a href="{% url 'editar_quarto' item.pk %}">Editar</a>
+                    <a href="{% url 'deletar_quarto' item.pk %}">Excluir</a>
+                {% else %}
+                    <a href="{% url 'reserva_quarto' item.pk %}">Reservar</a>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Nenhum quarto cadastrado.</li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

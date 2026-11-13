@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Hotéis cadastrados</h1>
+<main>
+    <ul>
+        {% for item in hoteis %}
+            <li>
+                <strong>{{ item.nome_hotel }}</strong> — {{ item.endereco }} ({{ item.quartos.all|length }} quarto{{ item.quartos.all|length|pluralize }})
+                {% if item == meu_hotel %}<em>(seu hotel)</em>{% endif %}
+            </li>
+        {% empty %}
+            <li>Nenhum hotel cadastrado.</li>
+        {% endfor %}
+    </ul>
+</main>
+{% endblock %}

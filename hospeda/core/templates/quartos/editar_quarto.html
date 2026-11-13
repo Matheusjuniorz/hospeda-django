@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Editar quarto: {{ quarto.nome_quarto }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'lista_quartos' %}">Cancelar</a>
+</form>
+{% endblock %}

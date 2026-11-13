@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Editar hotel</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+    <a href="{% url 'painel_admin_hotel' %}">Cancelar</a>
+</form>
+{% endblock %}

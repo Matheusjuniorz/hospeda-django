@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+{% block conteudo %}
+<h1>Tem certeza que deseja excluir o quarto "{{ objeto.nome_quarto }}"?</h1>
+<p>As reservas deste quarto também serão apagadas.</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+    <a href="{% url 'lista_quartos' %}">Cancelar</a>
+</form>
+{% endblock %}
